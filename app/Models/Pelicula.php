@@ -13,6 +13,7 @@ class Pelicula extends Model
      *
      * @var array
      */
+    public $timestamps = false;
     protected $fillable = [
         'titulo',
         'sipnosis',

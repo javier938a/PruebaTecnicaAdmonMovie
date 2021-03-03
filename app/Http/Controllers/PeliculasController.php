@@ -6,14 +6,14 @@ use App\Http\Requests\PeliculaRequest;
 use App\Models\Categoria;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 class PeliculasController extends Controller
 {
     public function inicio(){
-        $peliculas = Pelicula::all();
-       
-        return view('peliculas',compact('peliculas'));
+        return view('peliculas', [
+            'peliculas'=>DB::table('peliculas')->paginate(3)
+        ]);
     }
 
     public function detalle_pelicula($id){
@@ -51,7 +51,6 @@ class PeliculasController extends Controller
 
     public function update(PeliculaRequest $request){
         $pelicula = Pelicula::find($request->id);
-        print_r($request->id_categoria);
         $pelicula->titulo=$request->titulo;
         $pelicula->sipnosis=$request->sipnosis;
         $pelicula->anio_estreno=$request->anio_estreno;
@@ -59,9 +58,9 @@ class PeliculasController extends Controller
         $pelicula->costo_de_renta_dia=floatval($request->costo_de_renta_dia);
         #print_r($request->cantidad);
         $pelicula->estado=$request->estado;
-        #$pelicula->cantidad=intval($request->cantidad);
-        #$pelicula->save();
-        return $request->all();
+        $pelicula->cantidad=intval($request->cantidad);
+        $pelicula->save();
+        return redirect()->route('movie');
         
     }
 

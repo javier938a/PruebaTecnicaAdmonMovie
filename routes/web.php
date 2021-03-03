@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PeliculasController;
 use App\Models\Pelicula;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,11 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', function($numero=''){
-    return view('index');
+    $peliculas=Pelicula::all();
+   
+    return view('index', [
+        'peliculas'=>DB::table('peliculas')->paginate(3)
+    ]);
 })->name('index');
 
 Route::get('peliculas/{numero?}', [PeliculasController::class,'inicio'])->name('movie');
@@ -30,6 +36,10 @@ Route::get('peliculas/detalle_pelicula/{id}', [PeliculasController::class, 'deta
 Route::get('peliculas/editar_pelicula/{id}', [PeliculasController::class, 'edit'])->name('edit_movie');
 Route::post('peliculas/update_movie/{id}', [PeliculasController::class, 'update'])->name('update_movie');
 Route::get('peliculas/eliminar_pelicula/{id}', [PeliculasController::class, 'eliminar_pelicula'])->name('del_movie');
+
+Route::get('categorias', [CategoriaController::class, 'inicio'])->name('listar_cate');
+Route::get('categorias/crear_categorias', [CategoriaController::class, 'nueva_categoria'])->name('nueva_cate');
+Route::post('categorias/nueva_categoria', [CategoriaController::class, 'crear_categoria'])->name('crear_cate');
 /*Route::get('peliculas/{numero?}', function($numero=''){
     $equipo=['1','2','3'];
     return view('peliculas',compact('equipo'));

@@ -56,5 +56,8 @@
                   {{--!! $peliculas->render() !!--}}
               </div>
         </div>
-    </div>    
+    </div> 
+    <div class="row">
+        {{ $peliculas->onEachSide(5)->links() }}
+    </div>   
 @endsection

@@ -45,6 +45,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('movie') }}">Peliculas</a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('listar_cate') }}" class="nav-link">Categorias</a>
+            </li>
         </ul>
               <!-- Search form -->
         <form class="d-flex input-group w-auto">
