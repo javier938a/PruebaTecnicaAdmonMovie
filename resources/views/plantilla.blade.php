@@ -66,7 +66,9 @@
         </div>
     </div>
     </nav>
-
+    <div class="container">
+        @yield('contenido')
+    </div>
         <!-- MDB -->
 
     <!--Aqui el pie de pagina-->
@@ -131,9 +133,7 @@
         <!-- Section: Social media -->
     </div>
     <!-- Grid container -->
-    <div class="container">
-        @yield('contenido')
-    </div>
+  
 
 
     <!-- Copyright -->
