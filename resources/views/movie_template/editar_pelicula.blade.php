@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            {{--Formulario para edirar pelicula--}}
+            {{--Formulario para editar pelicula--}}
             @include('movie_template.fragmentos.error')
             {!! Form::model($pelicula, ['route'=>['update_movie', $pelicula->id], 'method'=>'POST']) !!}
                 @include('movie_template.fragmentos.form')

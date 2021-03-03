@@ -1,10 +1,21 @@
 @extends('plantilla')
 
+{{--Aqui el formulario de busqueda de pelicula--}}
+@section('busqueda')
+    {!! Form::open(['route'=>'index', 'method'=>'GET', 'class'=>'d-flex input-group w-auto']) !!}
+    {!! Form::text('clave_busqueda', null, ['class'=>'form-control', 'placeholder'=>'pelicula o categoria', 'aria-label'=>'Buscar Movies']) !!}
+    <button class="btn btn-outline-primary" type="submit" data-mdb-ripple-color="dark">
+        Buscar
+    </button>
+    {!! Form::close() !!}
+@endsection
+
 @section('contenido')
-    <center><h1>Catalogo peliculas</h1></center>
+    <center><h1>Catalogo de peliculas</h1></center>
     <div class="row">
         <div class="container">
             <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-3 row-cols-xl-3">
+                {{--Se muestra en card el listado total de peliculas--}}
                 @foreach ($peliculas as $item)
                 <div class="card">
                     <h5 class="card-header">{{ $item->titulo }}</h5>

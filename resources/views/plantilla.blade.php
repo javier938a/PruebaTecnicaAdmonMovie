@@ -1,3 +1,4 @@
+{{--Plantilla Base para todas las vistas blade--}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prueba tecnica </title>
     <!-- Font Awesome -->
+    {{--Para el diseño utilizo mdbootstrap ya que me sirve para agregar un diseño mas o menos agradable y rapido--}}
     <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     rel="stylesheet"
@@ -50,25 +52,14 @@
             </li>
         </ul>
               <!-- Search form -->
-        <form class="d-flex input-group w-auto">
-            <input
-                type="search"
-                class="form-control"
-                placeholder="Type query"
-                aria-label="Buscar Movies"
-                name="clave_busqueda"
-            />
-            <button
-            class="btn btn-outline-primary"
-            type="button"
-            data-mdb-ripple-color="dark"
-            >
-            Search
-            </button>
-        </form>
+              {{--Especificando donde se va poner el formulario de Boostrap--}}
+        {{--Seccion apartada para mostrar el formulario de busqueda--}}
+        @yield('busqueda')
+
         </div>
     </div>
     </nav>
+    {{--Seccion llamada contenido que sera lo que cambiara dependiendo del enlaze--}}
     <div class="container">
         @yield('contenido')
     </div>

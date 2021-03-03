@@ -24,4 +24,5 @@ class Pelicula extends Model
         'cantidad'
     ];
 
+
 }

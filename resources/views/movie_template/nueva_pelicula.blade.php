@@ -8,6 +8,7 @@
 </div>
 <div class="col-12">
   <div class="col-12">
+    {{--Para el registro se usa una plantilla partial para poder reutilizarla en la edicion de una categoria--}}
     @include('movie_template.fragmentos.error')
     {!! Form::open(['url'=>'/pelicula/insertar_pelicula', 'method'=>'post']) !!}
       @include('movie_template.fragmentos.form')

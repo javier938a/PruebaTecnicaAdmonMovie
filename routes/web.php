@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\Index;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PeliculasController;
 use App\Models\Pelicula;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -21,13 +24,8 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/', function($numero=''){
-    $peliculas=Pelicula::all();
-   
-    return view('index', [
-        'peliculas'=>DB::table('peliculas')->paginate(3)
-    ]);
-})->name('index');
+
+Route::get('/', [IndexController::class, 'Index'])->name('index');
 
 Route::get('peliculas/{numero?}', [PeliculasController::class,'inicio'])->name('movie');
 Route::post('pelicula/insertar_pelicula', [PeliculasController::class, 'crear_pelicula'])->name('create_movie');
